@@ -12,7 +12,7 @@
 #define BLUEPIN 4
 //NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 // Variables
-int rSpeed = 195; // robot's max speed (used in Move() calculations)
+int rSpeed = 150; // robot's max speed (used in Move() calculations)
 //int TS1 = 75; // turn speed 1
 //int FS = 75; // forward speed: the speed at which both motors turn at
 // move function - we pass a speed for each wheel m1,m2 - as a percentage 0-100
@@ -20,13 +20,13 @@ void Move(int m1, int m2) {
   // for each motor, one pin is held low, the other pin is toggled - this is called sign-magnitude drive
   // the other drive method uses two pwm signals, anitphase to each other and is called locked antiphase
   if (m1 < 0) { // for reverse - not used
-    analogWrite(MPIN1A, rSpeed * abs(m1) / 100);
+    analogWrite(MPIN1A, rSpeed * 1.15 * abs(m1) / 100);
     analogWrite(MPIN1B, 0);
   }
   else
   { // normal operation
     analogWrite(MPIN1A, 0);
-    analogWrite(MPIN1B, rSpeed * m1 / 100);
+    analogWrite(MPIN1B, rSpeed * 1.15 * m1 / 100);
   }
   if (m2 < 0) { // for reverse - not used
     analogWrite(MPIN2A, rSpeed * abs(m2) / 100);
